@@ -12,3 +12,14 @@ All notable changes to this project will be documented here.\n
 """
 # 日志条目排序方式（可选值：asc, desc）
 sorting = "desc"
+
+# 标签匹配规则
+[tag]
+# 匹配 Git 标签的正则表达式（如 v1.0.0）
+regex = "^v(?P<version>.+)$"
+# 跳过的标签（如 alpha/beta 版本）
+skip_tags = ["v0.1.0-beta"]
+# 标签日期格式（默认：%Y-%m-%d）
+date_format = "%Y-%m-%d"
+# 标签排序方式（默认按版本号排序）
+sorting = "semver"
