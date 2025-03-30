@@ -51,7 +51,7 @@ path = ""         # 排除敏感文件
 
 # [[conditional]] 区块 - 条件文件包含
 # --------------------------------------------
-[[conditional]]
+#[[conditional]]
 # 当 enable_ci = true 时包含CI配置
 # condition = { variable = "enable_ci", value = true }
 # include = [".github/workflows/ci.yml"]  # 包含文件列表
