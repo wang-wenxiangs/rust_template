@@ -23,3 +23,35 @@ skip_tags = ["v0.1.0-beta"]
 date_format = "%Y-%m-%d"
 # 标签排序方式（默认按版本号排序）
 sorting = "semver"
+
+[filter_commits]
+# 是否过滤合并提交（默认：true）
+exclude_merges = true
+
+# 忽略的提交类型（如 chore, test 等）
+[[commit_parsers]]
+regex = "^(chore|test|style)"
+# 隐藏这些提交，不显示在日志中
+skip = true
+
+# 匹配 BREAKING CHANGE 提交
+[[commit_parsers]]
+regex = "^(break|breaking)"
+group = "Breaking Changes"
+# 设置为此类提交的优先级（越高越靠前）
+priority = 10
+
+# 匹配 "docs" 类型的提交
+[[commit_parsers]]
+regex = "^docs"
+group = "Documentation"
+# 是否在日志中隐藏提交的 scope
+hide_scope = true
+
+# 匹配 "fix" 类型的提交
+[[commit_parsers]]
+regex = "^fix"
+group = "Bug Fixes"
+
+# 提交解析规则（按顺序匹配）
+[commit_parsers]
