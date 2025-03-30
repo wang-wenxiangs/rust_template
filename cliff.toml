@@ -16,13 +16,13 @@ sorting = "desc"
 # 模板配置
 [template]
 # 变更日志的头部模板（支持变量：{{ version }}、{{ date }}）
-header = """
-{% if version %}\
-    ## {{ version }} - {{ timestamp | date(format="%Y-%m-%d") }}
-{% else %}\
-    ## Unreleased
-{% endif %}\n
-"""
+#header = """
+#{% if version %}\
+#    ## {{ version }} - {{ timestamp | date(format="%Y-%m-%d") }}
+#{% else %}\
+#    ## Unreleased
+#{% endif %}\n
+#"""
 # 每个分组的条目模板（Markdown 格式）
 #body = """
 #{% for group, commits in commits | group_by(attribute="group") %}
