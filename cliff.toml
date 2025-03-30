@@ -12,30 +12,3 @@ All notable changes to this project will be documented here.\n
 """
 # 日志条目排序方式（可选值：asc, desc）
 sorting = "desc"
-
-# 模板配置
-[template]
-# 变更日志的头部模板（支持变量：{{ version }}、{{ date }}）
-#header = """
-#{% if version %}\
-#    ## {{ version }} - {{ timestamp | date(format="%Y-%m-%d") }}
-#{% else %}\
-#    ## Unreleased
-#{% endif %}\n
-#"""
-# 每个分组的条目模板（Markdown 格式）
-#body = """
-#{% for group, commits in commits | group_by(attribute="group") %}
-#    ### {{ group }}
-#    {% for commit in commits %}
-#    - {{ commit.message | split(pat="\n") | first }}\
-#      ({{ commit.id | truncate(length=7, end="") }})
-#    {% endfor %}
-#{% endfor %}\n
-#"""
-# 底部模板（如链接到 GitHub 比较页面）
-#footer = """
-#**Full Changelog**: {{ previous_tag }}...{{ current_tag }}\n
-#"""
-# 是否删除模板中的空白行（默认：true）
-#trim = true
