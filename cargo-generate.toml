@@ -1,0 +1,85 @@
+# =============================================
+# cargo-generate.toml 配置文件
+# 完整配置参考（包含注释说明）
+# =============================================
+
+# [template] 区块 - 模板元数据
+[template]
+authors = ["star <1570679451@qq.com>"]  # 模板作者信息（必填）
+description = "A full-featured Rust project template"  # 模板描述（必填）
+#license = "MIT/Apache-2.0"                # 可选：模板许可证
+#homepage = "https://github.com/your/repo"  # 可选：模板主页
+#documentation = "https://your-docs.site"   # 可选：文档地址
+
+
+# [[vars]] 区块 - 用户输入变量（可定义多个）
+# --------------------------------------------
+[[vars]]
+name = "rust_template"        # 变量标识符（模板中用 {{project_name}}）
+prompt = "rust_template"  # 用户提示信息
+default = "my-rust_template"    # 默认值（可选）
+# type = "string"            # 变量类型（默认string，可选：bool, number）
+# regex = "^[a-zA-Z_][a-zA-Z0-9_-]+$"  # 输入验证正则表达式（可选）
+
+[[vars]]
+#name = "enable_ci"
+#prompt = "Enable CI pipeline? (true/false)"
+#default = "true"
+#type = "bool"                # 布尔类型会自动转换用户输入
+
+
+# [hooks] 区块 - 生成前后执行脚本
+# --------------------------------------------
+[hooks]
+# pre = "scripts/pre-generate.sh"   # 生成前执行（清理旧文件等）
+# post = "scripts/post-generate.sh" # 生成后执行（git初始化等）
+# force = true                   # 即使文件存在也强制执行（危险！）
+
+
+# [files] 区块 - 文件包含/排除控制
+# --------------------------------------------
+[files]
+include = ["src/**"]  # 明确包含的文件模式（优先级高于exclude）
+
+# 排除文件（可定义多个[[exclude]]）
+[[exclude]]
+path = ["README.md", "cliff.toml"]        # 排除文件
+
+[[exclude]]
+path = ""         # 排除敏感文件
+
+
+# [[conditional]] 区块 - 条件文件包含
+# --------------------------------------------
+[[conditional]]
+# 当 enable_ci = true 时包含CI配置
+# condition = { variable = "enable_ci", value = true }
+# include = [".github/workflows/ci.yml"]  # 包含文件列表
+
+[[conditional]]
+# 当使用数据库时排除SQLite配置
+# condition = { variable = "database_type", value = "postgres" }
+# exclude = ["config/sqlite.toml"]
+
+
+# [init] 区块 - 生成后初始化操作（0.15.0+）
+# --------------------------------------------
+[init]
+path = "."                   # 初始化目录（默认当前目录）
+# git = true                 # 是否初始化git仓库（默认true）
+# branch = "main"            # 指定默认分支名称
+# vcs = "none"               # 禁用版本控制
+
+
+# =============================================
+# 使用说明：
+# 1. 将此文件放在模板根目录
+# 2. 模板文件中使用 {{variable_name}} 语法
+# 3. 运行命令：
+#    cargo generate --git https://github.com/your/template
+#
+# 注意事项：
+# - 变量名推荐 snake_case 格式
+# - 钩子脚本需要模板中包含且可执行
+# - 条件判断支持 ==, !=, >=, <= 等操作符
+# =============================================

@@ -27,6 +27,7 @@ cargo generate 是一个用于生成项目模板的工具。它可以使用已�
 cargo install cargo-generate
 # 使用
 cargo generate github项目模型
+cargo generate wang-wenxiangs/rust_template
 ```
 
 参考：[https://github.com/cargo-generate/cargo-generate](https://github.com/cargo-generate/cargo-generate)
