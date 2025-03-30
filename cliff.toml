@@ -55,3 +55,27 @@ group = "Bug Fixes"
 
 # 提交解析规则（按顺序匹配）
 [commit_parsers]
+
+# 匹配 "feat" 类型的提交
+[[commit_parsers]]
+# 正则表达式匹配提交消息
+regex = "^feat"
+# 分组标题（显示在变更日志中）
+group = "Features"
+# 是否跳过此类型的提交（默认：false）
+skip = false
+# 默认作用域（用于未指定 scope 的提交）
+default_scope = "general"
+
+# Git 相关配置
+[git]
+# 是否遵循 Conventional Commits 规范（默认：true）
+conventional_commits = true
+# 过滤不符合规范的提交（默认：false）
+filter_unconventional = false
+# 是否分割包含多部分的提交（如多次提交合并）
+split_commits = []
+# 提交信息预处理（如删除前缀）
+#commit_preprocessors = [
+#    { pattern = '^(\w+):\s*(.*)', replace = "$2" }
+#]
