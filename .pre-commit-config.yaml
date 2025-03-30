@@ -1,0 +1,63 @@
+fail_fast: false
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-byte-order-marker
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-yaml # 校验 YAML 文件语法
+      - id: end-of-file-fixer  # 确保文件以换行符结尾
+      - id: mixed-line-ending
+      - id: trailing-whitespace # 检查并修复行尾空格
+
+  - repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+      - id: black
+
+  - repo: local # 本地钩子标识
+    hooks:
+      - id: cargo-fmt
+        name: cargo fmt
+        description: Format files with rustfmt.
+        entry: bash -c 'cargo fmt -- --check' # 执行的命令
+        language: rust # 使用Rust环境
+        files: \.rs$ # 仅当 Rust 文件变更时触发
+        args: [ ]
+      - id: cargo-deny
+        name: cargo deny check
+        description: Check cargo dependencies
+        entry: bash -c 'cargo deny check -d' # 执行的命令
+        language: rust # 使用Rust环境
+        files: \.rs$
+        args: [ ]
+      - id: typos
+        name: typos
+        description: check typo
+        entry: bash -c 'typos' # 执行的命令
+        language: rust # 使用Rust环境
+        files: \.*$
+        pass_filenames: false
+      - id: cargo-check
+        name: cargo check
+        description: Check the package for errors.
+        entry: bash -c 'cargo check --all' # 执行的命令
+        language: rust # 使用Rust环境
+        files: \.rs$
+        pass_filenames: false
+      - id: cargo-clippy
+        name: cargo clippy
+        description: Lint rust sources
+        entry: bash -c 'cargo clippy --all-targets --all-features --tests --benches -- -D warnings' # 执行的命令
+        language: rust # 使用Rust环境
+        files: \.rs$
+        pass_filenames: false
+      - id: cargo-test
+        name: cargo test
+        description: unit test for the project
+        entry: bash -c 'cargo nextest run --all-features' # 执行的命令
+        language: rust # 使用Rust环境
+        files: \.rs$
+        pass_filenames: false

@@ -497,6 +497,9 @@ footer = """
 ---
 _此文件由 [git-cliff](https://git-cliff.org) 自动生成_"""
 
+# 从模板中删除前导和尾随空格
+trim = true
+
 # Git 提交解析规则
 [git]
 # 提交类型到日志分组的映射（可自定义）
