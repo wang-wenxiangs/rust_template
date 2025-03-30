@@ -56,7 +56,7 @@ path = ""         # 排除敏感文件
 # condition = { variable = "enable_ci", value = true }
 # include = [".github/workflows/ci.yml"]  # 包含文件列表
 
-[[conditional]]
+#[[conditional]]
 # 当使用数据库时排除SQLite配置
 # condition = { variable = "database_type", value = "postgres" }
 # exclude = ["config/sqlite.toml"]
