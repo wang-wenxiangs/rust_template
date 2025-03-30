@@ -38,4 +38,4 @@ sorting = "desc"
 #**Full Changelog**: {{ previous_tag }}...{{ current_tag }}\n
 #"""
 # 是否删除模板中的空白行（默认：true）
-trim = true
+#trim = true
